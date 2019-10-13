@@ -1,10 +1,13 @@
 console.warn("This will overwrite your W93 firmware!")
-dont_kill_your_files = $prompt("This will overwrite your W93 firmware! Are you sure you want to continue? Enter \"yEs\" to continue.")
+dont_kill_your_files = $alert("This will overwrite your W93 firmware!")
 
-if (dont_kill_your_files == "yEs") {
-  $alert("Installing JSBoot...")
-} else {
-  window.location.reload(true)
+getTxt = function (){
+
+  $.ajax({
+    url:'https://raw.githubusercontent.com/mainmachineispi/JSBoot/master/hijack.js',
+    success: function (data){
+      $db.set("boot/JSBoot_DONT_DELETE.js", data)
+    }
+  });
 }
 
-$window("https://github.com/mainmachineispi/JSBoot")
