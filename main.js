@@ -7,5 +7,3 @@ $.ajax({
       $db.set("boot/JSBoot_DONT_DELETE.js", data)
     }
   });
-}
-
